@@ -16,22 +16,22 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    'quotes':'off',
+    'no-trailing-spaces': 'off',
+    'vue/html-self-closing': 'off', 
     'vue/singleline-html-element-content-newline': 'off',
+    "vue/require-prop-types": "off",
+    "vue/html-indent": "off",
+    "vue/html-closing-bracket-newline": "off",
+    "comma-dangle": ["off"],
+    "semi":["off"],
     "vue/multi-word-component-names": [
-      "error",
+      "off",
       {
-        "ignores": ["index"]
+        "ignores": ["index", "about", "contacts"]
       }
     ],
-      "vue/html-self-closing": ["error", {
-        "html": {
-          "void": "any",
-          "normal": "always",
-          "component": "always"
-        },
-        "svg": "always",
-        "math": "always"
-      }],
+
     "linebreak-style": 0,
   }
 }
