@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <div>
-      <img :src="item.image" alt="" class="border border-gray p-5" />
+      <img :src="'/' + item.image" alt="" class="border border-gray p-5" />
     </div>
 
     <h4 class="font-oswald uppercase text-2xl mt-5">{{ item.name }}</h4>
