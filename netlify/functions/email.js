@@ -32,10 +32,9 @@ exports.handler = async function (event, context) {
     secure: true,
     auth: {
       user: "apikey",
+      pass: process.env.sendgridApiKey,
     },
   });
-
-  console.log("APIKEY", process.env.sendgridApiKey);
 
   try {
     await mailer.sendMail(email);
