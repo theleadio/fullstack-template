@@ -3,7 +3,7 @@
     <div class="bg-[url('/menu-page.jpg')] px-20">
       <div id="menu" class="grid grid-cols-2 py-5">
         <div id="menu-left">
-          <img src="logo.png" class="w-[150px]" alt="" />
+          <img src="/logo.png" class="w-[150px]" alt="" />
         </div>
 
         <div id="menu-right">
