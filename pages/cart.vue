@@ -91,6 +91,7 @@ export default {
     removeItem(name) {
       this.$store.commit("removeItem", name);
     },
+
     submitOrder() {
       this.$axios
         .post("/.netlify/functions/email", {

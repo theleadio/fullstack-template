@@ -30,6 +30,6 @@ exports.handler = async function (event, context) {
       }),
     };
   } catch (error) {
-    console.log("Error adding document", error);
+    console.log("Error adding document ", error);
   }
 };
