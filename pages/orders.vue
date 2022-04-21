@@ -22,6 +22,21 @@
       </h1>
     </div>
 
+    <div v-if="user === null" id="login" class="text-center mt-20">
+      <p>This page is limited to authorized users only.</p>
+      <button
+        class="font-oswald uppercase bg-red-500 text-white text-center py-3 px-8 mt-5"
+      >
+        Login
+      </button>
+    </div>
+
+    <div v-if="user" id="logout" class="text-center mt-20">
+      <button class="font-oswald uppercase bg-red-500 text-white text-center py-3 px-8">
+        Logout
+      </button>
+    </div>
+
     <table
       v-for="order in orders"
       :key="order.id"
@@ -63,13 +78,47 @@ export default {
   data() {
     return {
       orders: [],
+      user: {},
+    };
+  },
+
+  head() {
+    return {
+      script: [
+        {
+          src: "https://identity.netlify.com/v1/netlify-identity-widget.js",
+        },
+      ],
     };
   },
 
   mounted() {
-    this.$axios.get("/.netlify/functions/readorders").then((response) => {
-      this.orders = response.data;
-    });
+    this.user = window.netlifyIdentity.currentUser();
+    if (this.user) {
+      this.readOrders();
+    }
+  },
+
+  methods: {
+    readOrders() {
+      this.$axios.get("/.netlify/functions/readorders").then((response) => {
+        this.orders = response.data;
+      });
+    },
+
+    login() {
+      window.netlifyIdentity.open();
+      window.netlifyIdentity.on("login", (user) => {
+        this.user = user;
+        this.readOrders();
+      });
+    },
+
+    logout() {
+      window.netlifyIdentity.logout();
+      this.user = null;
+      this.orders = [];
+    },
   },
 };
 </script>
